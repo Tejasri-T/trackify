@@ -1,0 +1,115 @@
+
+<dialog class="settings-modal" id="settingsModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Account Settings</h2>
+            <span class="close-btn">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="settings-option">
+                <div class="option-info">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Edit Profile</span>
+                </div>
+                
+                <button onclick="document.getElementById('editMessage').style.display='block'" id="editButton" class="edit-btn">Edit</button>
+            </div>
+
+            <dialog id="editMessage" class="myDialog">
+                <form action="{{ url_for('edit_username') }}" method="POST">
+                    {{ edit_username_form.hidden_tag() }}
+
+                    <label for="username">Enter your new username:</label>
+                    <div>
+                    {{ edit_username_form.username(id=username,class="form-control") }}
+                    </div>
+                    <div>
+                        <button type="submit" class="delete-btn">Save</button>
+                    <button type="button" onclick="document.getElementById('editMessage').style.display='none'">Cancel</button>
+                    </div>
+                    
+                </form>
+            </dialog>
+
+         
+
+            <div class="settings-option">
+                <div class="option-info">
+                    <i class="fas fa-lock"></i>
+                    
+                    <span>Change Password</span>
+                </div>
+                <button onclick="document.getElementById('ChangeMessage').style.display='block'" id="changeBtn" class="edit-btn">change</button>
+            </div>
+            <dialog class="myDialog" id="ChangeMessage">
+                <h3>Change Password</h3>
+                <form action="{{ url_for('change_password') }}" method="POST">
+                    {{ change_password_form.hidden_tag() }}
+                    
+                    <div>
+                    <label for="current_password">Current Password:</label>
+                    {{ change_password_form.current_password(class="form-control") }}
+                    </div>
+
+
+                    <div>
+                    <label for="new_password">New Password:</label>
+                    {{ change_password_form.new_password(class="form-control") }}
+                    </div>
+                    
+                    <div>
+                    <label for="confirm_password">Confirm Password:</label>
+                    {{ change_password_form.confirm_password(class="form-control") }}
+                    </div>
+
+                    {% if change_password_form.confirm_password.errors %}
+                    <small class="text-danger">
+                        {{ change_password_form.confirm_password.errors[0] }}  <!-- "Passwords must match" -->
+                    </small>
+                {% endif %}
+                    <div>
+                        <button type="submit" class="edit-btn">Change</button>
+                    <button type="button" onclick="document.getElementById('ChangeMessage').style.display='none'">Cancel</button>
+                    </div>
+                    
+                </form>
+            </dialog>
+
+            <div class="settings-option">
+                <div class="option-info">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </div>
+                <label class="theme-switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-option danger">
+                <div class="option-info">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Deactivate Account</span>
+                </div>
+                <dialog id="deactivateDialog" class="myDialog">
+                    <div><p>{{current_user.username}} , do you want really want to deactivate your account?</p></div>
+                    <div class="logoutdiv">
+                      <a href="{{url_for('deactivate')}}"class="delete-btn"> Deactivate</a>
+                    <button onclick="document.getElementById('deactivateDialog').style.display='none'" class="sidebutton" style="margin-top:10px;">Cancel</button>
+        
+                    </div>
+                  </dialog>
+                
+                  <button onclick="document.getElementById('deactivateDialog').style.display='block'" class="deactivate-btn"> Deactivate</button>
+            </div>
+        </div>
+    </div>
+</dialog>
+
+
+
+<!-- Buttons to Open Modal -->
+
+
+
+

@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block title %}
+    Subscription Page
+{% endblock %}
+
+
+
+{% block content %}
+<script>
+    function startCountdown() {
+        let timers = document.querySelectorAll(".countdown");
+
+        timers.forEach(timer => {
+            let endTime = parseInt(timer.dataset.endtime) * 1000; // Convert to milliseconds
+
+            function updateTimer() {
+                let now = new Date().getTime();
+                let timeLeft = endTime - now;
+
+                if (timeLeft > 0) {
+                    let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                    timer.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                if (days < 7) {
+                    timer.style.color = "red"; // Change color if less than 7 days
+                } else {
+                    timer.style.color = "green"; // Keep green otherwise
+                }
+                }
+                  else {
+                timer.innerHTML = "Expired";
+                timer.style.color = "red"; // Expired subscriptions in gray
+                let subscriptionCard = timer.closest('.subscription-card');
+                subscriptionCard.style.backgroundColor = "gray"; // Expired subscriptions in gray
+                subscriptionCard.style.color = "white"; // Expired subscriptions in gray
+                let editBtn = subscriptionCard.querySelector('.edit-btn');
+                editBtn.textContent = "Renewal";
+                editBtn.style.backgroundColor = "darkgray";
+                let deleteBtn = subscriptionCard.querySelector('.delete-btn');
+                deleteBtn.style.backgroundColor = "darkgray";
+
+            }
+        
+        }
+            updateTimer(); // Run immediately
+            setInterval(updateTimer, 1000); // Update every second
+
+        });
+    }
+
+    window.onload = startCountdown;
+</script>
+
+
+<div class="main-content">
+   
+
+    <div class="header" >
+        <h1>Subscriptions</h1>
+        
+    </div>
+    
+    <div class="filter-container">
+    <form method="GET" action="{{ url_for('subscriptions') }}" class="filter-form" style="margin-right: auto;">
+        <label for="month">Filter by Month:</label>
+        <select name="month" id="month" onchange="this.form.submit()">
+            <option value="">All</option>
+            {% set months = [
+                'January', 'February', 'March', 'April', 'May', 'June', 
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ] %}
+            {% for i in range(12) %}
+                <option value="{{ i + 1 }}" {%  if request.args.get('i+1')|int == i+1  %}selected{% endif %}>
+                    {{ months[i] }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+    <a href="{{url_for('export_subscriptions_excel')}}" class="addsub" style="margin-bottom: 10px;">Export Data</a>
+</div>
+    <div class="card">
+    <div class="card-container">
+        {% if subscriptions %}
+            {% for subscription in subscriptions %}
+            <div class="subscription-card feature-card {% if subscription.subscription_type == 'free_trial' %}free-trial{% endif %}" >
+                <h3 style="color: var(--deep-coffee);">{{ subscription.name }}</h3>
+                <span style="font-weight: bold;">
+                    {{ 'Paid' if subscription.subscription_type == 'normal' else 'Free Trial' }}
+                </span>
+                {% if subscription.subscription_type == 'normal' %}
+                    <p>Cost: Rs.{{ subscription.cost }}</p>
+                {% endif %}
+                <p>Due Date: {{ subscription.due_date }}</p>
+                <p>Expires in:</p>
+                <p style="color: green;"> <span class="countdown" data-endtime="{{ subscription.end_date }}"></span></p>
+                <p>Category: {{ subscription.category }}</p>
+
+                <div class="buttons">
+                    <a href="{{ url_for('edit_subscription', subscription_id=subscription.id) }}" class="edit-btn">Edit</a>
+                    
+                    <!-- Delete Button & Dialog -->
+                    <button class="delete-btn" onclick="openDeleteDialog('{{ subscription.id }}', '{{ subscription.name }}')">Delete</button>
+                    <dialog id="deleteDialog-{{ subscription.id }}" class="myDialog">
+                        <p>Do you want to delete {{ subscription.name }}?</p>
+                        <a href="{{ url_for('delete_subscription', subscription_id=subscription.id) }}" class="delete-btn">Confirm</a>
+                        <button onclick="closeDeleteDialog('{{ subscription.id }}')">Cancel</button>
+                    </dialog>
+                </div>
+            </div>
+            
+            {% endfor %}
+            {% endif %}
+            <a href="{{ url_for('addsubscription') }}" class="subscription-card feature-card add-card" style="height: 305.4px; width: 260px;">+</a>
+    </div>
+    </div>
+</div>
+
+<script>
+    function openDeleteDialog(id, name) {
+        document.getElementById(`deleteDialog-${id}`).style.display = 'block';
+    }
+    
+    function closeDeleteDialog(id) {
+        document.getElementById(`deleteDialog-${id}`).style.display = 'none';
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,140 @@
+
+{% extends 'base.html'%}
+{% block title %}
+    Dashboard
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Spacing between cards */
+}
+    .card {
+  flex: 1 1 300px;
+    max-width: 200px;
+    height: 200px !important;
+    background: linear-gradient(135deg, var(--card-bg), var(--earthy-beige)); /* Changes background color */;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    color: var(--deep-coffee);
+
+    /* 🔥 Center Content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Ensures text stays centered */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Moves card slightly up */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhances shadow effect */
+  background: linear-gradient(135deg, var(--soft-clay), var(--warm-terra)); /* Changes background color */
+  color: var(--dark-brown); /* Darker text on hover */
+}
+
+/* Subtle Glow Effect */
+.card:hover::before {
+  opacity: 1;
+}
+</style>
+<div class="main-content" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuXzEiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+PHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTAiIGZpbGw9InJnYmEoMCwgMCwgMCwgMC4wNSkiIC8+PC9wYXR0ZXJuPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybl8xKSIgLz48L3N2Zz4=');">
+  <h2>Welcome {{ current_user.username   }}</h2>
+    <div class="header">
+        <h1>Dashboard Overview</h1>
+        <a href="url_for{{'addsubscription'}}">Add Subscription</a>
+    </div>
+
+    <div class="card-container">
+        <div class="card ">
+            <h3 style="margin:0px">Current Expenses</h3>
+            <p >Rs:{{total_cost}}</p>
+        </div>
+
+        <div class="card ">
+            <h3 style="margin:0px">Active Subscriptions</h3>
+            <p >{{total}}</p>
+        </div>
+
+        <div class="card ">
+            <h3 style="margin:0px">Budget Usage</h3>
+            <p>{{budget_used_percentage|round(2)}}%</p>
+            <p class="budget-usage">{{total_cost}} of {{budget|round(2)}} limit</p>
+        </div>
+
+        <div class="card ">
+            <h3 style="margin:0px">Upcoming Renewal</h3>
+            {% if subscriptions %}
+                {% for subscription in subscriptions %}
+                    <p>{{subscription.name}}</p>
+                    <p class="budget-usage">{{subscription.due_date}}</p>
+                {% endfor %}
+            {% else %}
+                <p>No upcoming renewals</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="spendingChart"></canvas>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Convert JSON data from Flask into usable format
+    const categoryCosts = JSON.parse('{{ subscription_costs | tojson | safe }}');
+
+    // Extract sorted labels and values
+    const labels = Object.keys(categoryCosts);
+    const dataValues = Object.values(categoryCosts);
+    console.log(labels, dataValues);
+    const ctx = document.getElementById('spendingChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,  // Dynamic labels from due dates
+            datasets: [{
+                label: 'Monthly Spending',
+                data: dataValues,  // Dynamic costs per month
+                borderColor: '#D1B27F',
+                backgroundColor: 'rgba(209, 178, 127, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}
+
+

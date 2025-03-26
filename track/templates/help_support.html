@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block title %}Help & Support{% endblock %}
+
+{% block content %}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .close-btn:hover {
+        color: white;
+        background: var(--deep-coffee);
+    }
+
+    .faq-answer {
+    display: none;
+    margin-top: 5px;
+  }
+  .faq-item h4 {
+    cursor: pointer;
+  }
+</style>
+
+<script>
+    function goBack() {
+        window.history.back();
+
+    }
+
+    function toggleAnswer(element) {
+      var answer = element.nextElementSibling;
+      answer.style.display = (answer.style.display === "none" || answer.style.display === "") ? "block" : "none";
+    }
+</script>
+
+{% block sidebar %}
+
+{% endblock %}
+<div class="about" >
+  <div class="container" style="display: flex; flex-direction: column; ">
+    <div class="header" style="margin-bottom: 40px;
+            position: relative; display:flex; justify-content: center; align-items: center; flex-direction: column;">
+        <button class="close-btn" onclick="goBack()">&times;</button>
+        <h1>Help & Support<span class="brand"></span></h1>
+        <p class="subtitle">We're here to help you get the most out of Trackify</p>
+    </div>
+
+    <div class="features" style="display: flex; flex-direction: column;">
+      <!-- FAQ Section -->
+      <div class="feature-card">
+        <div class="feature-content">
+          <i class="fas fa-life-ring feature-icon"></i>
+          <h3 class="feature-title">FAQs</h3>
+            <div class="feature-description">
+              <div class="faq-item">
+                <h4 onclick="toggleAnswer(this)">How do I add a subscription?</h4>
+                <p class="faq-answer">Navigate to the Subscriptions page and click the "+" button to add new subscriptions.</p>
+              </div>
+              <div class="faq-item">
+                <h4 onclick="toggleAnswer(this)">Can I export my data?</h4>
+                <p class="faq-answer">Yes! Use the Reports section to generate and export detailed reports.</p>
+              </div>
+              <div class="faq-item">
+                <h4 onclick="toggleAnswer(this)">Does Trackify send payment reminders?</h4>
+                <p class="faq-answer">Yes, email notifications alert you about upcoming due dates and free trial expirations.</p>
+              </div>
+              <div class="faq-item">
+                <h4 onclick="toggleAnswer(this)">Can I track free trials?</h4>
+                <p class="faq-answer">Yes, Trackify tracks free trial end dates and sends timely reminders.</p>
+              </div>
+              <div class="faq-item">
+                <h4 onclick="toggleAnswer(this)">Is Trackify free to use?</h4>
+                <p class="faq-answer">Trackify offers both free and premium plans based on your needs.</p>
+              </div>
+            </div>
+
+
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="feature-card ">
+        <div class="feature-content">
+          <i class="fas fa-envelope feature-icon"></i>
+          <h3 class="feature-title">Feedback</h3>
+          <form class="contact-form">
+            <div class="form-group">
+              <input type="email" class="form-control glow-input" placeholder="Your email" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control glow-input" rows="4" placeholder="Your message"></textarea>
+            </div>
+            <button type="submit" class="cta-button">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Support -->
+    <div class="our-story-section">
+      <h2 class="section-title">Live Support</h2>
+      <div class="story-content">
+        <div class="story-text">
+          <p>Available 24/7 through these channels:</p>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="#" class="cta-button " >
+                <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" class="button-icon">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                GitHub
+            </a>
+            <a href="#" class="cta-button  gmail-button" >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button-icon">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Gmail
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

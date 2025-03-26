@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trackify - Smart Subscription Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+   <!-- Add this inside the <head> section of index.html -->
+
+
+</head>
+<body>
+  
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a class="nav-brand" href="/index">Trackify</a>
+         <!-- Modify the nav-brand link in the navbar -->
+        
+        </a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <div class="auth-buttons">
+                <a href="/login">Sign In</a>
+                <span style="color: var(--warm-terra) ; font-size: 25px;">/</span>
+                <a href="/register">Register</a>
+            </div>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category,message in messages %}
+            <div class = "alert alert-{{ category}}">
+                {{message}}
+                <button type="button" class = "close-btn" onclick="closeAlert(this)">
+                <span>&times;</span>
+                </button>
+            </div>
+            
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <!-- Hero Section -->
+    <section id="hero">
+        <div style="margin-top: 100px;">
+        <h1 class="hero-title">Trackify</h1>
+        <p class="hero-tagline tagline">Smarter Saving, Smarter Tracking</p>
+        <a href="/register" class="cta-button" style="background-color: var( --deep-coffee);color: #fff;">Get Started</a>
+    </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="features-container">
+            <div class="feature-card-index">
+                <i class="fas fa-envelope feature-icon"></i>
+                <h3>Email Notifications</h3>
+                <p>Timely alerts for payments and trial expirations</p>
+            </div>
+            <div class="feature-card-index">
+                <i class="fas fa-chart-pie feature-icon"></i>
+                <h3>Budget Analytics</h3>
+                <p>Visual spending breakdowns and limits</p>
+            </div>
+            <div class="feature-card-index">
+                <i class="fas fa-stopwatch feature-icon"></i>
+                <h3>Live Countdowns</h3>
+                <p>Real-time renewal tracking</p>
+            </div>
+            <div class="feature-card-index">
+                <i class="fas fa-coins feature-icon"></i>
+                <h3>Savings Reports</h3>
+                <p>Annual savings analysis and insights</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-content">
+            <h2>About Trackify</h2>
+            <p>Trackify revolutionizes subscription management by combining financial oversight with intuitive design. Our platform helps you:</p>
+            <ul style="list-style: none; padding: 0">
+                <li>✓ Track all subscriptions in one place</li>
+                <li>✓ Avoid unwanted charges</li>
+                <li>✓ Optimize your spending</li>
+            </ul>
+        </div>
+    </section>
+    <footer style="text-align: center; padding: 10px; background-color: #f4f0e8; color: #3E2723;">
+        &copy; 2025 Trackify. All rights reserved.
+        <p>Coded by <strong>Tejasri .T</strong>, <strong>Siri Chandana .S</strong>, <strong>Jothika Sai .P</strong></p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

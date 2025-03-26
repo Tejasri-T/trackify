@@ -1,0 +1,108 @@
+{% extends 'base.html'%}
+{% block title %}
+    budgetmanager page
+{% endblock %}
+
+{% block content %}
+<style>
+  .bm-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    color: #7D4F3C;
+}
+</style>
+<div class="main-content">
+  <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+    <a href="{{url_for('export_financial_report_excel')}}" class="addsub">Export Data</a>
+  </div>
+    <div class="bm-card" style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h2>Analysis</h2>
+
+        <p>Monthly Expenses: {{total_cost}} | Total Subscriptions: {{total}} | Budget Status:
+          {% if bugdet is none %} 
+            Budget not set
+          {% elif total_cost > budget %}
+            <span style="color: red;">Over Limit</span>
+          {% else %}
+            Within Limit
+          {% endif %}
+  
+        </p>
+      </div>
+      <div>
+        <button onclick="document.getElementById('budgetDialog').style.display='block'" class="set-budget-btn" style="margin-right: 40px;">Set Budget</button>
+        <dialog id="budgetDialog" class="myDialog">
+          <h3>Set Budget</h3>
+          <form action="{{ url_for('set_budget')}}" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.budget.label }} {{ form.budget(class="form-control") }}
+            <div>
+              {% for error in form.budget.errors %}
+                <p style="color: red;">{{ error }}</p>
+              {% endfor %}
+            <button type="submit" class="set-budget-btn">Set</button>
+            <button onclick="document.getElementById('budgetDialog').style.display='none'">Cancel</button>
+            </div>
+        </form>
+            
+        </dialog>
+      </div>
+    </div>
+
+    <div class="chart">
+        <div class="chart-box">
+        <canvas id="categoryChart"></canvas>
+        </div>
+        <div class="chart-box">
+        <h3>Bugdet graph</h3>
+        <canvas id="budgetChart"></canvas>
+        
+        </div>
+    </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Subscription Category Chart
+  const categoryCosts = JSON.parse('{{ category_costs | tojson | safe }}');
+  const budget = JSON.parse('{{ budget | tojson | safe }}');
+  const total = JSON.parse('{{ total_cost | tojson | safe }}');
+  const ctxCategory = document.getElementById('categoryChart').getContext('2d');
+  new Chart(ctxCategory, {
+    type: 'doughnut',
+    data: {
+      labels: ['Entertainment', 'Utilities', 'Health', 'Others'],
+      datasets: [{
+        data: categoryCosts,
+        backgroundColor: ['#7D4F3C','#9C6D56','#C49F64' ,'#D1B27F' ]
+      }]
+    }
+  });
+
+  // Budget Chart
+  const ctxBudget = document.getElementById('budgetChart').getContext('2d');
+  new Chart(ctxBudget, {
+    type: 'bar',
+    data: {
+      labels: ['Budget', 'Spent'],
+      datasets: [{
+        label: 'Amount ($)',
+        data: [budget, total ],
+        backgroundColor: ['#C49F64', '#D1B27F']
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+</script>
+
+
+
+
+{% endblock %}

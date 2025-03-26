@@ -1,0 +1,52 @@
+
+{% extends 'base.html'%}
+{% block title %}
+    Addsubscription page
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+  <div class="form-container">
+    <h2>New Subscription</h2>
+    <form action="{{ url_for('addsubscription') }}" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-grid">
+        <div>
+            <label for="subscription-name">Subscription Name:</label>
+            {{ form.name(id="subscription-name", class="form-control") }}
+        </div>
+
+        <div>
+            <label for="subscription-type">Subscription Type:</label>
+            {{ form.subscription_type(id="subscription-type", class="form-control", onchange="toggleCostField()") }}
+        </div>
+
+        <div>
+            <label for="cost">Cost:</label>
+            {{ form.cost(id="cost", class="form-control") }}
+        </div>
+
+        <div>
+            <label for="due_date">Due Date:</label>
+            {{ form.due_date(id="due-date", class="form-control") }}
+            {% for error in form.due_date.errors %}
+                <p style="color: red;">{{ error }}</p>
+            {% endfor %}
+            
+        </div>
+
+        <div>
+            <label for="category">Category:</label>
+            {{ form.category(id="category", class="form-control") }}
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+    </form>
+    
+    <br>  
+    
+    <a href="{{ url_for('subscriptions') }}">Back to Subscriptions</a>
+  </div>
+</div>
+
+{% endblock %}

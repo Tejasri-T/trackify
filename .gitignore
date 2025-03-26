@@ -1,0 +1,46 @@
+# 🔹 Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 🔹 Ignore Virtual Environment
+venv/
+env/
+
+# 🔹 Ignore Environment Variables (Secrets)
+.env
+*.env
+
+# 🔹 Ignore SQLite Database (If Using)
+instance/
+*.sqlite3
+*.db
+
+# 🔹 Ignore Logs and Temporary Files
+*.log
+logs/
+temp/
+cache/
+
+# 🔹 Ignore Compiled Python Files
+*.egg-info/
+*.egg
+
+# 🔹 Ignore Flask Session Files
+flask_session/
+
+# 🔹 Ignore System Files
+.DS_Store
+Thumbs.db
+
+# 🔹 Ignore Node.js Dependencies (If using npm)
+node_modules/
+
+# 🔹 Ignore Frontend Build Files
+dist/
+build/
+
+# 🔹 Ignore Minified & Source Map Files
+*.min.js
+*.map

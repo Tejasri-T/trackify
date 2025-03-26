@@ -1,0 +1,239 @@
+/* Dark Mode Variables */
+:root {
+    --dark-background: #2d2d2d;
+    --dark-text: #ffffff;
+    --dark-card-bg: #3a3a3a;
+    --dark-nav-bg: #1f1f1f;
+    --dark-accent: #777673; 
+    --dark-border: #444444;
+  }
+  
+  /* Dark Mode Styles */
+  body.dark-mode {
+    background: var(--dark-background);
+    color: var(--dark-text);
+  }
+  
+  body.dark-mode .navbar {
+    background: var(--dark-nav-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-mode .nav-brand,
+  body.dark-mode .nav-links a,
+  body.dark-mode .auth-buttons a {
+    color: var(--dark-text);
+  }
+  
+  body.dark-mode .auth-buttons {
+    background: var(--dark-card-bg);
+  }
+  
+  body.dark-mode .auth-buttons a:hover {
+    background: var(--dark-accent);
+    color: var(--dark-background);
+  }
+  
+  body.dark-mode #hero {
+    background: var(--dark-background);
+  }
+  
+  body.dark-mode .hero-title,
+  body.dark-mode .tagline {
+    color: var(--dark-text);
+  }
+  
+  body.dark-mode .cta-button {
+    background: var(--dark-accent);
+    color: var(--dark-background);
+  }
+  
+  body.dark-mode #features {
+    background: var(--dark-card-bg);
+  }
+  
+  body.dark-mode .feature-card {
+    background: var(--dark-background);
+    color: var(--dark-text);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-mode .feature-icon {
+    color: var(--dark-accent);
+  }
+  
+  body.dark-mode #about {
+    background: var(--dark-card-bg);
+  }
+  
+  body.dark-mode .about-content {
+    color: var(--dark-text);
+  }
+  
+  body.dark-mode .sidebar {
+    background-color: var(--dark-nav-bg);
+  }
+  
+  body.dark-mode .sidebar-header,
+  body.dark-mode .sidebar-footer {
+    background-color: var(--dark-card-bg);
+  }
+  
+  body.dark-mode .sidebar-menu a {
+    color: var(--dark-text);
+  }
+
+  body.dark-mode .sidebar-menu button {
+    background-color: var(--dark-nav-bg);
+    color: var(--dark-text);
+  }
+
+  body.dark-mode .sidebar-menu a:hover, body.dark-mode .sidebar-menu button:hover {
+    background-color: var(--dark-accent);
+  }
+  
+  body.dark-mode .main-content {
+    background-color: var(--dark-background);
+  }
+  
+  body.dark-mode .header h1 {
+    color: var(--dark-text);
+  }
+  
+  body.dark-mode .card {
+    background: var(--dark-card-bg);
+    color: var(--dark-text);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-mode .chart-box {
+    background: var(--dark-card-bg);
+    color: var(--dark-text);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-mode .form-body {
+    background-color: var(--dark-background);
+  }
+  
+  body.dark-mode .register-container,
+  body.dark-mode .login-container,
+  body.dark-mode .form-container {
+    background: var(--dark-card-bg);
+    color: var(--dark-text);
+  }
+  
+  body.dark-mode .register-btn,
+  body.dark-mode .login-btn,
+  body.dark-mode .form-container button {
+    background-color: var(--dark-accent);
+    color: var(--dark-background);
+  }
+  
+  body.dark-mode .register-btn:hover,
+  body.dark-mode .login-btn:hover,
+  body.dark-mode .form-container button:hover {
+    background-color: var(--dark-accent);
+    opacity: 0.9;
+  }
+  
+  body.dark-mode .subscription-card {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-text);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-mode .edit-btn,
+  body.dark-mode .delete-btn {
+    background-color: var(--dark-border);
+    color: var(--dark-background);
+  }
+  
+  body.dark-mode .edit-btn:hover,
+  body.dark-mode .delete-btn:hover {
+    background-color: var(--dark-accent);
+    opacity: 0.9;
+  }
+  
+  body.dark-mode .addsub {
+    background-color: var(--dark-accent);
+    color: var(--dark-background);
+  }
+  
+  body.dark-mode .addsub:hover {
+    background-color: var(--dark-accent);
+    opacity: 0.9;
+  }
+
+
+
+/* ---------------- darkmode for settings_modal ------------------ */
+
+  /* ---------------- darkmode for settings_modal ------------------ */
+  body.dark-mode .settings-modal {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  body.dark-mode .modal-content {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-text);
+  }
+  
+  body.dark-mode .settings-option {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+  }
+  
+  body.dark-mode .settings-button {
+    background-color: var(--dark-accent);
+    color: var(--dark-background);
+  }
+  
+  body.dark-mode .theme-switch .slider {
+    background-color: var(--dark-border);
+  }
+  
+  body.dark-mode input:checked + .slider {
+    background-color: var(--dark-accent);
+  }
+  
+  body.dark-mode .danger {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+  }
+  
+  body.dark-mode .deactivate-btn {
+    background-color: var(--danger-color);
+    color: var(--dark-text);
+  }
+  body.dark-mode .card {
+    background: #3a3a3a; 
+    color: #ffffff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-mode .subscription-card {
+    background: var(--dark-accent); /* Dark Gray Background */
+  }
+
+  body.dark-mode .card h3 {
+    color:var(--dark-text); /* Gold Accent for Headings in Dark Mode */
+  }
+  
+  body.dark-mode .card p {
+    color: #cccccc; /* Light Gray for Text in Dark Mode */
+  }
+  
+  body.dark-mode .card a {
+    color:#cccccc; /* Gold Accent for Links in Dark Mode */
+  }
+  
+  body.dark-mode .card a:hover {
+    color: #ffffff; /* White on Hover */
+  }
+
+
+ 
+ 
+  
+  

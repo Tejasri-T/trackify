@@ -1,0 +1,224 @@
+{% extends 'base.html'%}
+{% block title %}
+    Aboutus page
+{% endblock %}
+
+{% block content %}
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  .close-btn:hover {
+    color: white;
+    background: var(--deep-coffee);
+}
+}
+</style>
+
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% block sidebar %}
+
+{% endblock %}
+<div class="about">
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <div class="container">
+       
+        
+        <div class="header" style="margin-bottom: 40px;
+            position: relative; display:flex; justify-content: center; align-items: center;flex-direction: column;">
+            <button class="close-btn" onclick="goBack()" >&times;</button>
+            <h1>About Trackify</h1>
+            
+            <h3 class="subtitle" >Smart Tracking, Smarter Saving</h3>
+            <p class="tagline">Welcome to <span class="brand">Trackify</span>, your personal subscription management assistant. We help you take control of your recurring expenses with a seamless tracking solution.</p>
+        </div>
+        <div class="our-story-section">
+            <h2 class="section-title">Our Story</h2>
+            <div class="story-content">
+                <div class="story-image">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Trackify founding team">
+                    </div>
+                </div>
+                <div class="story-text">
+                    <p>It all started with what seemed like a harmless free trial. Just a few clicks, and we had access to premium features, no commitments, or so we thought.
+
+                        Like most people, we told ourselves, "We'll cancel before the trial ends." But life got busy, and before we knew it A notification popped up:
+                        
+                        "₹999 debited from your account."
+                        
+                        Confused, frustrated, and now out of cash for something we barely used, we scrambled to cancel. There are no refunds and there's no turning back!
+                        
+                        That’s when it hit us that this wasn’t just our problem. Auto-renewals, forgotten subscriptions, hidden charges were draining money from countless people, often without them even realizing it.
+                        
+                        That's how the idea of Trackify took birth.
+                        
+                        A simple yet powerful tool to track your free trials, get timely reminders, and avoid unnecessary deductions. No more unwanted charges. No more last-minute panic. Just complete control over your subscriptions.
+                        
+                    </p>
+                    <p></p> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-heading">
+            <h2 class="section-title">The Trackify Advantage!</h2>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-content">
+                    <div class="feature-icon">📊</div>
+                    <h2 class="feature-title">Smart Tracking</h2>
+                    <p class="feature-description">Track your subscriptions in real-time with intelligent categorization and automated alerts.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-content">
+                    <div class="feature-icon">💰</div>
+                    <h2 class="feature-title">Budget Control</h2>
+                    <p class="feature-description">Set personalized budgets and receive notifications to prevent overspending.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-content">
+                    <div class="feature-icon">🔒</div>
+                    <h2 class="feature-title">Secure & Private</h2>
+                    <p class="feature-description">Your data is fully encrypted, ensuring maximum security and privacy.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Get in Touch with Trackify!</h2>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button pulse">
+                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" class="button-icon">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="#" class="cta-button pulse gmail-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button-icon">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Gmail
+                </a>
+            </div>
+        </div>
+        
+        
+        <div class="footer">
+            <p>&copy; 2025 Trackify. All rights reserved.</p>
+            <div class="footer-content">
+               
+                <div class="social-links">
+                    <div class="group relative social-icon">
+                        <a href="trackify1111@gmail.com" aria-label="Gmail">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 hover:scale-125 duration-200 hover:stroke-accent">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </a>
+                        <span class="tooltip">Gmail</span>
+                    </div>
+                    
+                
+                    <div class="group relative social-icon">
+                        <a href="#" aria-label="GitHub">
+                            <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" class="w-8 hover:scale-125 duration-200 hover:stroke-accent">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </a>
+                        <span class="tooltip">GitHub</span>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Custom cursor animation
+        const cursor = document.querySelector('.custom-cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.display = 'block';
+            cursorDot.style.display = 'block';
+            
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+        
+        document.addEventListener('mouseenter', () => {
+            cursor.style.display = 'block';
+            cursorDot.style.display = 'block';
+        });
+        
+        document.addEventListener('mouseleave', () => {
+            cursor.style.display = 'none';
+            cursorDot.style.display = 'none';
+        });
+        
+        // Interactive elements cursor effect
+        const interactiveElements = document.querySelectorAll('a, button, .feature-card');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '50px';
+                cursor.style.height = '50px';
+                cursor.style.backgroundColor = 'rgba(212, 175, 55, 0.2)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.backgroundColor = 'rgba(212, 175, 55, 0.5)';
+            });
+        });
+        
+        
+        
+        // 3D card effect
+        const cards = document.querySelectorAll('.feature-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const angleX = (y - centerY) / 20;
+                const angleY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-15px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+    </script>
+</div>
+{% endblock %}
