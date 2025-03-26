@@ -1,2 +1,1 @@
-# TRACKIFY
-## Smart Tracking, Smarter Saving
+# TRACKIFY - Smart Tracking, Smarter Saving
