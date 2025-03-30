@@ -47,7 +47,8 @@ button{
   top: 0;
   margin-left: -35px;
   width: 100%;
-  background: var(--creamy-white);
+  background-color: #fff;
+  /* background: var(--creamy-white); */
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -297,7 +298,7 @@ body.form-body::before {
 /* Sidebar */
 .sidebar {
   width: 250px;
-  background-color: #7D4F3C; /* Lighter Brown */
+  background-color: var(--dark-brown); /* Lighter Brown */
   color: #fff;
   height: 100vh;
   display: flex;
@@ -309,7 +310,8 @@ body.form-body::before {
   padding: 20px;
   font-size: 1.5em;
   font-weight: bold;
-  background-color: #9C6D56; /* Soft Brown */
+  /* background-color: #9C6D56; Soft Brown */
+  background-color: #654942;
   text-align: center;
 }
 
@@ -331,7 +333,7 @@ body.form-body::before {
   display: flex;
   align-items: center;
   width: 250px;
-  background-color: #7D4F3C;
+  background-color: var(--dark-brown);
   color: #fff;
   padding: 15px 20px;
   transition: background 0.3s;
@@ -361,7 +363,7 @@ body.form-body::before {
 .sidebar-footer {
   padding: 20px;
   text-align: center;
-  background-color: #9C6D56; /* Soft Brown */
+  background-color: #654942; /* Soft Brown */
 }
 
 .sidebar-footer a {

@@ -125,14 +125,40 @@ def addsubscription():
     return render_template('addsubscription.html', form=form,min_date=min_date)
 
 
+# @app.route('/subscriptions')
+# @login_required
+# def subscriptions():
+#     month = request.args.get('month', type=int)
+#     subscriptions = Subscription.query.filter_by(user_id=current_user.id).all()
+
+#     # Convert due_date (db.Date) to Unix timestamp at midnight (start of the due date)
+
+#     subscriptions_data = [
+#         {
+#             "id": sub.id,
+#             "name": sub.name,
+#             "cost": sub.cost,
+#             "subscription_type": sub.subscription_type,
+#             "due_date": sub.due_date,  # Keep original date for display
+#             "end_date": int(datetime.combine(sub.due_date, datetime.min.time()).timestamp()),  # Convert to timestamp
+#             "category": sub.category
+#         }
+#         for sub in subscriptions if not month or sub.due_date.month == month
+#     ]
+
+#     return render_template('subscriptions.html', subscriptions=subscriptions_data)
+
+
 @app.route('/subscriptions')
 @login_required
 def subscriptions():
+    # Get the 'month' parameter from the request
     month = request.args.get('month', type=int)
+
+    # If 'month' is not provided or is an empty string, all subscriptions will be shown
     subscriptions = Subscription.query.filter_by(user_id=current_user.id).all()
 
-    # Convert due_date (db.Date) to Unix timestamp at midnight (start of the due date)
-
+    # Filter the subscriptions based on the selected month
     subscriptions_data = [
         {
             "id": sub.id,
@@ -147,7 +173,6 @@ def subscriptions():
     ]
 
     return render_template('subscriptions.html', subscriptions=subscriptions_data)
-
 
 @app.route('/edit_subscription/<int:subscription_id>', methods=['GET', 'POST'])
 @login_required
@@ -207,9 +232,9 @@ def budgetmanager():
         category = sub.category if sub.category in categories else 'others'
         category_costs[category] += sub.cost
 
-    # if current_user.monthly_budget == 0 or current_user.monthly_budget is None:
-    #     current_user.monthly_budget = 1500
-    #     db.session.commit() 
+    if current_user.monthly_budget == 0 or current_user.monthly_budget is None:
+        current_user.monthly_budget = 1500
+        db.session.commit() 
 
     budget = current_user.monthly_budget 
 

@@ -34,8 +34,8 @@
         </p>
       </div>
       <div>
-        <button onclick="document.getElementById('budgetDialog').style.display='block'" class="set-budget-btn" style="margin-right: 40px;">Set Budget</button>
-        <dialog id="budgetDialog" class="myDialog">
+        <button onclick="document.getElementById('budgetDialog').style.display='block'" class="set-budget-btn" style="margin-right: 40px;background-color: var(--primary-color); color: #fff;"">Set Budget</button>
+        <dialog id="budgetDialog" class="myDialog" style="padding-right: 35px;" >
           <h3>Set Budget</h3>
           <form action="{{ url_for('set_budget')}}" method="POST">
             {{ form.hidden_tag() }}
@@ -91,7 +91,7 @@
     data: {
       labels: ['Budget', 'Spent'],
       datasets: [{
-        label: 'Amount ($)',
+        label: 'Amount (₹)',
         data: [budget, total ],
         backgroundColor: ['#C49F64', '#D1B27F']
       }]
