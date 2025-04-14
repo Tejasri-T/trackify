@@ -52,7 +52,8 @@ body.dark-mode {
   background-color: #5b4033;
 }
 .dark-mode .sidebar-menu a,
-.dark-mode .sidebar-footer a {
+.dark-mode .sidebar-footer a,
+.dark-mode .priv-h3 {
   color: #f4e4d4;
 }
 .dark-mode .sidebar-menu a:hover,
@@ -98,6 +99,9 @@ body.dark-mode {
 /* Cards & Containers */
 .dark-mode .card,
 .dark-mode .feature-card,
+.dark-mode .toc-card,
+.dark-mode .policy-section,
+.dark-mode .consent-box,
 .dark-mode .chart-box,
 .dark-mode .subscription-card,
 .dark-mode .form-container,
@@ -199,7 +203,9 @@ body.dark-mode {
   background-color: #1c1814;
 }
 .dark-mode .section-title,
-.dark-mode .feature-title {
+.dark-mode .feature-title,
+.dark-mode .toc-card-title,
+.dark-mode .subtitle{
   color: #f4d59c;
 }
 .dark-mode .feature-description {
@@ -209,6 +215,7 @@ body.dark-mode {
 .dark-mode .faq-answer {
   color: #8d6849;
 }
+
 
 
 /* Tooltip */

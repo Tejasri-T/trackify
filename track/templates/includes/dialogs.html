@@ -12,10 +12,13 @@
 
 <dialog id="privacy-popup" class="settings-modal myDialog">
     <div class="privacy-content">
-      <h3>Privacy Policy</h3>
+      <button type="button" class = "close-btn"onclick="document.getElementById('privacy-popup').style.display='none'" style="float: right; margin-bottom: 10px; padding-left:5px;padding-right:5px;padding-top: 0%;padding-bottom:0px;">
+        <span>&times;</span>
+      </button>
+      <h3 class="priv-h3">Privacy Policy</h3>
       <p>By using this website, you agree to our privacy policy.</p>
-      <button class="accept-button" onclick="document.getElementById('privacy-popup').style.display='none'">Accept</button>
-      <a class="accept-button" href="{{url_for('privacy_policy')}}">More Info</a>
+      <!-- <button class="accept-button" onclick="document.getElementById('privacy-popup').style.display='none'">Accept</button> -->
+      <a class="accept-button" href="{{url_for('privacy_policy')}}" >More Info</a>
     </div>
 
 

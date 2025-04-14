@@ -55,7 +55,7 @@ def login():
     return render_template('login.html' , form = form)
 
 
-@app.route('/help-support')
+@app.route('/help_support')
 def help_support():
     return render_template('help_support.html')
 
@@ -389,10 +389,10 @@ def contact():
             print("To:", msg.recipients)
             mail.send(msg)
             flash("Your message has been sent!", "success")
-            return redirect("/contact")
+            return redirect("/help_support")
         except Exception as e:
             flash(f"Failed to send message: {str(e)}", "error")
-            return redirect("/contact")
+            return redirect("/help_support")
     return render_template("help_support.html")
 
 @app.context_processor
