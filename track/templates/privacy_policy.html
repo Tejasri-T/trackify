@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% block title %}
+    Privacy Policy
+{% endblock %}
+
+{% block content %}
+
+<div class="privacy-policy">
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <div class="container">
+        <div class="header">
+            <button class="close-btn" onclick="goBack()">&times;</button>
+            <h1>Privacy Policy</h1>
+            <p class="effective-date">Effective Date: April 2025</p>
+        </div>
+
+        <div class="policy-intro">
+            <p>At Trackify, we care about your privacy. This policy explains how we handle your personal information while helping you manage subscriptions with ease and transparency.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2 class="section-title">1. What Information We Collect</h2>
+            <p>We collect only the data needed to provide our services:</p>
+            <ul>
+                <li><strong>Personal Info</strong> – Such as your name and email when you register.</li>
+                <li><strong>Subscription Details</strong> – The services you track, including name, cost, category, and renewal dates.</li>
+                <li><strong>Usage Data</strong> – General insights on how you interact with the platform to help us improve functionality.</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2 class="section-title">2. How We Use Your Information</h2>
+            <p>We use your data to:</p>
+            <ul>
+                <li>Help you monitor your subscriptions and set up timely reminders.</li>
+                <li>Provide summaries, countdowns, and insights for better budget awareness.</li>
+                <li>Enhance the platform based on user feedback and interaction patterns.</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2 class="section-title">3. Your Privacy & Security</h2>
+            <p>Your data is stored securely and treated with care:</p>
+            <ul>
+                <li>We use encryption and limited access to keep your information safe.</li>
+                <li>Your information is never sold or shared with third parties.</li>
+                <li>Regular checks ensure we maintain a secure and reliable environment.</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2 class="section-title">4. Your Choices & Rights</h2>
+            <p>You remain in control of your data:</p>
+            <ul>
+                <li>You can update or delete your subscription details at any time.</li>
+                <li>You can turn off reminders or unsubscribe from emails.</li>
+                <li>You may request permanent deletion of your data.</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2 class="section-title">5. Third-Party Tools</h2>
+            <p>Trackify may use trusted tools for services like email notifications or analytics, but your data is never shared unnecessarily.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2 class="section-title">6. Changes to This Policy</h2>
+            <p>If we make updates, we'll inform you via email or platform notice to keep you fully informed.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2 class="section-title">7. Contact Us</h2>
+            <p>If you have questions or concerns about your privacy, feel free to reach us at support@trackify.com.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Trackify. All rights reserved.</p>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    // Custom cursor animation
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.display = 'block';
+        cursorDot.style.display = 'block';
+        
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+    });
+
+    document.addEventListener('mouseenter', () => {
+        cursor.style.display = 'block';
+        cursorDot.style.display = 'block';
+    });
+
+    document.addEventListener('mouseleave', () => {
+        cursor.style.display = 'none';
+        cursorDot.style.display = 'none';
+    });
+
+    // Interactive elements cursor effect
+    const interactiveElements = document.querySelectorAll('a, button');
+
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.width = '50px';
+            cursor.style.height = '50px';
+            cursor.style.backgroundColor = 'rgba(212, 175, 55, 0.2)';
+        });
+        
+        el.addEventListener('mouseleave', () => {
+            cursor.style.width = '20px';
+            cursor.style.height = '20px';
+            cursor.style.backgroundColor = 'rgba(212, 175, 55, 0.5)';
+        });
+    });
+</script>
+
+<style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.privacy-policy {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    color: white;
+    background: var(--deep-coffee);
+}
+
+h1 {
+    font-size: 2.5em;
+    color: var(--deep-coffee);
+    margin-bottom: 10px;
+}
+
+.effective-date {
+    font-style: italic;
+    color: #666;
+}
+
+.policy-intro {
+    margin-bottom: 30px;
+}
+
+.policy-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.8em;
+    color: var(--deep-coffee);
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+    color: #666;
+}
+
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--deep-coffee);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.cursor-dot {
+    width: 4px;
+    height: 4px;
+    background-color: var(--deep-coffee);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+}
+</style>
+{% endblock %}

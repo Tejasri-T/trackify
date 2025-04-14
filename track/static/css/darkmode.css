@@ -1,239 +1,238 @@
-/* Dark Mode Variables */
-:root {
-    --dark-background: #2d2d2d;
-    --dark-text: #ffffff;
-    --dark-card-bg: #3a3a3a;
-    --dark-nav-bg: #1f1f1f;
-    --dark-accent: #777673; 
-    --dark-border: #444444;
-  }
-  
-  /* Dark Mode Styles */
-  body.dark-mode {
-    background: var(--dark-background);
-    color: var(--dark-text);
-  }
-  
-  body.dark-mode .navbar {
-    background: var(--dark-nav-bg);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  body.dark-mode .nav-brand,
-  body.dark-mode .nav-links a,
-  body.dark-mode .auth-buttons a {
-    color: var(--dark-text);
-  }
-  
-  body.dark-mode .auth-buttons {
-    background: var(--dark-card-bg);
-  }
-  
-  body.dark-mode .auth-buttons a:hover {
-    background: var(--dark-accent);
-    color: var(--dark-background);
-  }
-  
-  body.dark-mode #hero {
-    background: var(--dark-background);
-  }
-  
-  body.dark-mode .hero-title,
-  body.dark-mode .tagline {
-    color: var(--dark-text);
-  }
-  
-  body.dark-mode .cta-button {
-    background: var(--dark-accent);
-    color: var(--dark-background);
-  }
-  
-  body.dark-mode #features {
-    background: var(--dark-card-bg);
-  }
-  
-  body.dark-mode .feature-card {
-    background: var(--dark-background);
-    color: var(--dark-text);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  body.dark-mode .feature-icon {
-    color: var(--dark-accent);
-  }
-  
-  body.dark-mode #about {
-    background: var(--dark-card-bg);
-  }
-  
-  body.dark-mode .about-content {
-    color: var(--dark-text);
-  }
-  
-  body.dark-mode .sidebar {
-    background-color: var(--dark-nav-bg);
-  }
-  
-  body.dark-mode .sidebar-header,
-  body.dark-mode .sidebar-footer {
-    background-color: var(--dark-card-bg);
-  }
-  
-  body.dark-mode .sidebar-menu a {
-    color: var(--dark-text);
-  }
+/* ======================= DARK MODE THEME ======================= */
+body.dark-mode {
+  background: #1a120e;
+  color: #f0e6da;
+  line-height: 1.6;
+}
 
-  body.dark-mode .sidebar-menu button {
-    background-color: var(--dark-nav-bg);
-    color: var(--dark-text);
-  }
+/* ======================= TYPOGRAPHY ======================= */
+.dark-mode h1, 
+.dark-mode h2, 
+.dark-mode h3, 
+.dark-mode h4, 
+.dark-mode h5, 
+.dark-mode h6 {
+  color: #f9e5c2;
+  margin-bottom: 1rem;
+}
 
-  body.dark-mode .sidebar-menu a:hover, body.dark-mode .sidebar-menu button:hover {
-    background-color: var(--dark-accent);
-  }
-  
-  body.dark-mode .main-content {
-    background-color: var(--dark-background);
-  }
-  
-  body.dark-mode .header h1 {
-    color: var(--dark-text);
-  }
-  
-  body.dark-mode .card {
-    background: var(--dark-card-bg);
-    color: var(--dark-text);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  body.dark-mode .chart-box {
-    background: var(--dark-card-bg);
-    color: var(--dark-text);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  body.dark-mode .form-body {
-    background-color: var(--dark-background);
-  }
-  
-  body.dark-mode .register-container,
-  body.dark-mode .login-container,
-  body.dark-mode .form-container {
-    background: var(--dark-card-bg);
-    color: var(--dark-text);
-  }
-  
-  body.dark-mode .register-btn,
-  body.dark-mode .login-btn,
-  body.dark-mode .form-container button {
-    background-color: var(--dark-accent);
-    color: var(--dark-background);
-  }
-  
-  body.dark-mode .register-btn:hover,
-  body.dark-mode .login-btn:hover,
-  body.dark-mode .form-container button:hover {
-    background-color: var(--dark-accent);
-    opacity: 0.9;
-  }
-  
-  body.dark-mode .subscription-card {
-    background-color: var(--dark-card-bg);
-    color: var(--dark-text);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  body.dark-mode .edit-btn,
-  body.dark-mode .delete-btn {
-    background-color: var(--dark-border);
-    color: var(--dark-background);
-  }
-  
-  body.dark-mode .edit-btn:hover,
-  body.dark-mode .delete-btn:hover {
-    background-color: var(--dark-accent);
-    opacity: 0.9;
-  }
-  
-  body.dark-mode .addsub {
-    background-color: var(--dark-accent);
-    color: var(--dark-background);
-  }
-  
-  body.dark-mode .addsub:hover {
-    background-color: var(--dark-accent);
-    opacity: 0.9;
-  }
+.dark-mode p, 
+.dark-mode li, 
+.dark-mode span {
+  color: #ddcbb9;
+}
 
+/* ======================= NAVIGATION ======================= */
+.dark-mode .navbar {
+  background-color: #120c09;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+  border-bottom: 1px solid #3a2a22;
+}
 
+.dark-mode .nav-links a,
+.dark-mode .nav-brand {
+  color: #f5e9d9;
+  padding: 0.8rem 1.2rem;
+}
 
-/* ---------------- darkmode for settings_modal ------------------ */
+.dark-mode .nav-links a:hover {
+  background-color: #2c2118;
+  color: #f9e5c2;
+}
 
-  /* ---------------- darkmode for settings_modal ------------------ */
-  body.dark-mode .settings-modal {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  
-  body.dark-mode .modal-content {
-    background-color: var(--dark-card-bg);
-    color: var(--dark-text);
-  }
-  
-  body.dark-mode .settings-option {
-    background-color: var(--dark-background);
-    color: var(--dark-text);
-  }
-  
-  body.dark-mode .settings-button {
-    background-color: var(--dark-accent);
-    color: var(--dark-background);
-  }
-  
-  body.dark-mode .theme-switch .slider {
-    background-color: var(--dark-border);
-  }
-  
-  body.dark-mode input:checked + .slider {
-    background-color: var(--dark-accent);
-  }
-  
-  body.dark-mode .danger {
-    color: var(--danger-color);
-    border-color: var(--danger-color);
-  }
-  
-  body.dark-mode .deactivate-btn {
-    background-color: var(--danger-color);
-    color: var(--dark-text);
-  }
-  body.dark-mode .card {
-    background: #3a3a3a; 
-    color: #ffffff; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  body.dark-mode .subscription-card {
-    background: var(--dark-accent); /* Dark Gray Background */
-  }
+/* ======================= SIDEBAR ======================= */
+.dark-mode .sidebar {
+  background-color: #1e1611;
+  border-right: 1px solid #4a3a2e;
+}
 
-  body.dark-mode .card h3 {
-    color:var(--dark-text); /* Gold Accent for Headings in Dark Mode */
-  }
-  
-  body.dark-mode .card p {
-    color: #cccccc; /* Light Gray for Text in Dark Mode */
-  }
-  
-  body.dark-mode .card a {
-    color:#cccccc; /* Gold Accent for Links in Dark Mode */
-  }
-  
-  body.dark-mode .card a:hover {
-    color: #ffffff; /* White on Hover */
-  }
+.dark-mode .sidebar-header {
+  background-color: #2c2118;
+  border-bottom: 1px solid #5b4033;
+}
 
+.dark-mode .sidebar-menu a,
+.dark-mode .sidebar-footer a {
+  color: #f4e4d4;
+  padding: 0.8rem 1.5rem;
+}
 
- 
- 
-  
-  
+.dark-mode .sidebar-menu a:hover,
+.dark-mode .sidebar-menu button:hover {
+  background-color: #3a2a22;
+  color: #f9e5c2;
+}
+
+/* ======================= CARDS & DASHBOARD ======================= */
+.dark-mode .card {
+  background-color: #231913;
+  color: #f5e9d9;
+  border: 1px solid #4a3a2e;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dark-mode .card h3 {
+  color: #f4d59c;
+  border-bottom: 1px solid #4a3a2e;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dark-mode .card p {
+  color: #ddcbb9;
+  line-height: 1.7;
+}
+
+/* ======================= SETTINGS DIALOG ======================= */
+.dark-mode .modal-content {
+  background-color: #231913;
+  color: #f0e0c9;
+  border: 2px solid #6d4c3a;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.dark-mode .settings-option {
+  background-color: #2b221c;
+  padding: 1.2rem;
+  margin: 0.8rem 0;
+  border-left: 3px solid #d4a65f;
+  border-radius: 4px;
+}
+
+.dark-mode .settings-button {
+  background-color: #d4a65f;
+  color: #1f1a17;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+}
+
+.dark-mode .settings-button:hover {
+  background-color: #c2954f;
+}
+
+/* ======================= HELP & SUPPORT ======================= */
+.dark-mode .help {
+  background-color: #1e1611;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #4a3a2e;
+}
+
+.dark-mode .faq-item {
+  background-color: #231913;
+  border: 1px solid #4a3a2e;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+}
+
+.dark-mode .faq-item h3 {
+  color: #f4d59c;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.dark-mode .faq-item p {
+  color: #ddcbb9;
+  line-height: 1.7;
+  margin-left: 0.5rem;
+}
+
+.dark-mode .contact-method {
+  display: flex;
+  align-items: center;
+  margin: 1.2rem 0;
+  padding: 0.8rem;
+  background-color: #231913;
+  border-radius: 6px;
+}
+
+.dark-mode .contact-method svg {
+  margin-right: 1.2rem;
+  color: #d4a65f;
+  font-size: 1.2rem;
+}
+
+/* ======================= BUTTONS ======================= */
+.dark-mode button,
+.dark-mode .cta-button {
+  background-color: #d4a65f;
+  color: #1f1a17;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.dark-mode button:hover,
+.dark-mode .cta-button:hover {
+  background-color: #c2954f;
+  transform: translateY(-2px);
+}
+
+/* ======================= FORMS ======================= */
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: #2d2420;
+  color: #f5e9d9;
+  border: 1px solid #4d3c33;
+  padding: 0.8rem;
+  border-radius: 6px;
+}
+
+.dark-mode input:focus,
+.dark-mode select:focus,
+.dark-mode textarea:focus {
+  border-color: #d4a65f;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(212, 166, 95, 0.3);
+}
+
+/* ======================= STATUS INDICATORS ======================= */
+.dark-mode .status-indicator {
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.dark-mode .status-active {
+  background-color: #2d3a2d;
+  color: #a5d6a7;
+}
+
+.dark-mode .status-warning {
+  background-color: #4a3d2d;
+  color: #ffcc80;
+}
+
+.dark-mode .status-error {
+  background-color: #4a2d2d;
+  color: #ef9a9a;
+}
+
+/* ======================= SCROLLBARS ======================= */
+.dark-mode ::-webkit-scrollbar {
+  width: 12px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: #6d4c3a;
+  border-radius: 6px;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+  background: #1a120e;
+}
+
+/* ======================= TRANSITIONS ======================= */
+.dark-mode * {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

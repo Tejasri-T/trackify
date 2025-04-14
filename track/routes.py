@@ -1,4 +1,6 @@
 from collections import defaultdict
+
+from flask_mail import Message
 from track import app
 from flask import render_template , flash , redirect , url_for, abort,request
 from track.models import Subscription , User 
@@ -11,6 +13,7 @@ import pandas as pd
 from flask import send_file
 import os
 import time
+
 
 @app.route('/') 
 @app.route('/index')
@@ -312,7 +315,7 @@ def set_budget():
 def about():
     return render_template('about.html')
 
-@app.route('/privacy-policy')
+@app.route('/privacy_policy')
 def privacy_policy():
     return render_template('privacy_policy.html')
 
@@ -366,8 +369,31 @@ def export_subscriptions_excel():
     df_subscriptions.to_excel(file_path, index=False)  # Save to Excel
 
     return send_file(file_path, as_attachment=True)
-    
 
+from track import mail   
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        user_email = request.form.get('email')
+        user_message =  request.form .get('message')
+
+        msg = Message(
+            subject="New Contact Message from Trackify User",
+            sender=app.config['MAIL_USERNAME'],  # your Gmail
+            recipients=["trackify1111@gmail.com"],  # your email
+            body=f"From: {user_email}\n\nMessage:\n{user_message}"
+        )
+
+        try:
+            print("From:", msg.sender)
+            print("To:", msg.recipients)
+            mail.send(msg)
+            flash("Your message has been sent!", "success")
+            return redirect("/contact")
+        except Exception as e:
+            flash(f"Failed to send message: {str(e)}", "error")
+            return redirect("/contact")
+    return render_template("help_support.html")
 
 @app.context_processor
 def inject_forms():

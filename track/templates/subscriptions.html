@@ -11,7 +11,7 @@
         let timers = document.querySelectorAll(".countdown");
 
         timers.forEach(timer => {
-            let endTime = parseInt(timer.dataset.endtime) * 1000; // Convert to milliseconds
+            let endTime = (parseInt(timer.dataset.endtime) + 86399) * 1000; // Convert to milliseconds
 
             function updateTimer() {
                 let now = new Date().getTime();
