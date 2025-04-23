@@ -4,7 +4,7 @@ from flask_mail import Message
 from track import app
 from flask import render_template , flash , redirect , url_for, abort,request
 from track.models import Subscription , User 
-from track.forms import RegisterForm, LoginForm , SubscriptionForm ,EditSubscriptionForm,EditUsernameForm,ChangePasswordForm,BudgetForm
+from track.forms import RegisterForm, LoginForm , SubscriptionForm ,EditSubscriptionForm,EditUsernameForm,ChangePasswordForm,BudgetForm,NotificationPreferenceForm
 from track import db
 from flask_login import login_user,current_user,logout_user,login_required
 from sqlalchemy.sql import func
@@ -319,6 +319,21 @@ def about():
 def privacy_policy():
     return render_template('privacy_policy.html')
 
+@app.route('/notifications')
+@login_required
+def notifications():
+    upcoming_date = datetime.now(timezone.utc) + timedelta(days=7)
+    current_day = datetime.now(timezone.utc).date()  # Get current date
+    due_subscriptions = (
+        Subscription.query
+        .join(User)
+        .filter(
+            Subscription.due_date <= upcoming_date
+        )
+        .all()
+    )
+    
+    return render_template('notifications.html',current_day=current_day, subscriptions=due_subscriptions)
 
 def calculate_reports():
     monthly_spending = {}
@@ -395,10 +410,39 @@ def contact():
             return redirect("/help_support")
     return render_template("help_support.html")
 
+@app.route('/notifications_setting', methods=['GET', 'POST'])
+def notifications_setting():
+    user = User.query.get_or_404(current_user.id)  # Replace with current logged-in user
+
+    form = NotificationPreferenceForm()
+
+    if form.validate_on_submit():
+        current_user.notifications_enabled = form.notifications_enabled.data
+        current_user.notify_before = int(form.notify_before.data or 3)
+        db.session.commit()
+        flash("Preferences updated!", "success")
+        next_page = request.referrer
+        return redirect(next_page) if next_page else redirect(url_for("dashboard"))
+    
+    # Pre-fill the form with current user data
+    form.notifications_enabled.data = current_user.notifications_enabled
+    form.notify_before.data = str(current_user.notify_before)
+
+        
+
+
 @app.context_processor
 def inject_forms():
+    notification_form = NotificationPreferenceForm()
+    
+    if current_user.is_authenticated:
+        notification_form.notifications_enabled.data = current_user.notification_enabled
+        notification_form.notify_before.data = current_user.notify_before
+
+
     return {"edit_username_form": EditUsernameForm(),
-        "change_password_form": ChangePasswordForm(),}
+        "change_password_form": ChangePasswordForm(),
+        "notification_form": notification_form}
 
 
 

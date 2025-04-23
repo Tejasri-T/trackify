@@ -14,7 +14,7 @@ def get_due_subscriptions():
         .join(User)
         .filter(
             Subscription.due_date <= upcoming_date,
-            User.notification_preferences == True  # Only users who want notifications
+            User.notification_enabled == True  # Only users who want notifications
         )
         .all()
     )
@@ -36,6 +36,7 @@ def send_reminder_email(user_email, sub_name, due_date, subscription):
             f"Best regards,\n"
             f"Trackify Team"
         )
+       # notif_type = 'due_expired'
     else:
         subject = f"Reminder: {sub_name} Payment Due Soon!"
         body = (f"Hello,\n\nYour subscription '{sub_name}' is due on {due_date}. "

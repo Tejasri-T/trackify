@@ -107,7 +107,8 @@ body.dark-mode {
 .dark-mode .form-container,
 .dark-mode .settings-option,
 .dark-mode .container,
-.dark-mode .our-story-section {
+.dark-mode .our-story-section ,
+.dark-mode .notifications-panel{
   background-color: #2b221c;
   color: #f5e9d9;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -213,6 +214,25 @@ body.dark-mode {
 }
 
 .dark-mode .faq-answer {
+  color: #8d6849;
+}
+
+/* Notifications */
+.dark-mode .notification-card {
+  background-color: #3f3126;
+  color: #f5e9d9;
+  border: 1px solid #403027;
+}
+.dark-mode .notification-card .notification-title {
+  color: #f4d59c;
+}
+.dark-mode .notification-card button {
+  color: #302c2a;
+}
+.dark-mode .notification-card p {
+  color: #d2c3b5;
+}
+.dark-mode .notification-card a {
   color: #8d6849;
 }
 

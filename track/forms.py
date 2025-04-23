@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,EmailField,PasswordField,SubmitField,FloatField, DateField, SelectField
+from wtforms import BooleanField, StringField,EmailField,PasswordField,SubmitField,FloatField, DateField, SelectField
 from wtforms.validators import DataRequired, Email , EqualTo, Optional,Length,ValidationError,NumberRange
 from track.models import User
 from wtforms.validators import ValidationError
@@ -95,3 +95,13 @@ class ChangePasswordForm(FlaskForm):
 class BudgetForm(FlaskForm):
     budget = FloatField('Enter Budget', validators=[DataRequired(), NumberRange(min=0.01, message='Budget must be at least Rs. 0.01')])
     submit = SubmitField('Set Budget')
+
+
+class NotificationPreferenceForm(FlaskForm):
+    notifications_enabled = BooleanField("Enable Notifications")
+    notify_before = SelectField(
+        "Notify me before due date",
+        choices=[('1', '1 day'), ('3', '3 days'), ('7', '1 week')],
+        validators=[Optional()]
+    )
+    submit = SubmitField("Save Preferences")

@@ -60,7 +60,7 @@ def email_scheduler():
             for sub in subscriptions:
                 if not sub.last_notified or sub.last_notified < datetime.now(timezone.utc).date() - timedelta(days=1):
                     user = User.query.get(sub.user_id)
-                    if user and user.notification_preferences:
+                    if user and user.notification_enabled:
                         send_reminder_email(user.email, sub.name, sub.due_date, sub)
                        
             time.sleep(3600)  # Sleep for 1 hour before checking again

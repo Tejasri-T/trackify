@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block title %}
+    Notifications Page
+{% endblock %}
+
+
+
+{% block content %}
+    <style>
+        .main-content {
+            margin-left: 240px;
+            padding: 40px 40px 20px 40px;
+        }
+        
+    </style>
+ 
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="notifications-panel">
+            <div class="notifications-header">
+                <div>
+                    <h2>Notifications
+                        <span class="notification-badge"><i class="fas fa-bell"></i> <span id="badge-count">3 New</span></span>
+                    </h2>
+                </div>
+                <button onclick="markAllRead()"><i class="fas fa-check-double"></i> Mark All as Read</button>
+            </div>
+            <div class="notification-filters">
+                <button class="active" onclick="filterNotifications('all', this)">All</button>
+                <button onclick="filterNotifications('unread', this)">Unread</button>
+                <button onclick="filterNotifications('alert', this)">Alerts</button>
+            </div>
+            <div class="notifications-list" id="notifications-list">
+                {% if subscriptions %}
+                {% for subscription in subscriptions %}
+                    {% set time_diff = (subscription.due_date - current_day).days %}
+                <div class="notification-card unread" data-type="alert" data-read="false">
+                    <div>
+                        <div class="notification-title">
+                            {% if subscription.due_date < current_day%}
+                                {{ subscription.name }} has expired 
+                                <i class="fas fa-exclamation-triangle" style="color: #ff6b6b; font-size: 0.95em;"></i>
+                            {% else %}
+                                {{ subscription.name }} is due 
+                                <i class="fas fa-exclamation-circle" style="color: #ff6b6b; font-size: 0.95em;"></i>
+                            {% endif %}
+                        </div>
+                        <div class="notification-meta">
+                            <span>{{subscription.due_date}}</span>
+                            
+                            {% if time_diff <= 1 %}
+                                <i class="fas fa-circle" style="font-size: 0.5em;"></i>
+                                <span style="color: var(--danger); font-weight: 600;">High Priority</span>
+                            {% elif time_diff > 1 and time_diff <= 3 %}
+                                <i class="fas fa-circle" style="font-size: 0.5em;"></i>
+                                <span style="color: var(--accent-gold); font-weight: 600;">Moderate Priority</span>
+                            {% else %}
+                                <!-- <span style="color: var(--primary-color); font-weight: 600;"></span> -->
+                            {% endif %}
+                        </div>
+
+                        
+                        
+                                            <!-- <div class="notification-desc">
+                           
+                        </div> -->
+                    </div>
+                    <div class="notification-actions">
+                        <button class="mark-read-btn" onclick="markAsRead(this)"><i class="far fa-envelope-open"></i> Mark Read</button>
+                        <button onclick="viewDetails(this)"><i class="fas fa-external-link-alt"></i> View</button>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+               
+            </div>
+        </div>
+    </div>
+    <!-- JS for interactivity -->
+    <script>
+        function markAllRead() {
+            document.querySelectorAll('.notification-card.unread').forEach(card => {
+                card.classList.remove('unread');
+                card.setAttribute('data-read', 'true');
+                card.querySelector('.fa-exclamation-circle')?.remove();
+                const btn = card.querySelector('.mark-read-btn');
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check"></i> Read';
+                    btn.style.color = 'var(--success)';
+                }
+                
+            });
+            updateBadge();
+        }
+        function markAsRead(btn) {
+            const card = btn.closest('.notification-card');
+            if (card.classList.contains('unread')) {
+                card.classList.remove('unread');
+                card.setAttribute('data-read', 'true');
+                card.querySelector('.fa-exclamation-circle')?.remove();
+                updateBadge();
+            }
+            btn.innerHTML = '<i class="fas fa-check"></i> Read';
+            btn.style.color = 'var(--success)';
+            // setTimeout(() => {
+            //     btn.innerHTML = '<i class="far fa-envelope-open"></i> Mark Read';
+            //     btn.style.color = '';
+            // }, 1000);
+        }
+        function viewDetails(btn) {
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening...';
+            window.location.href = "{{ url_for('subscriptions') }}";
+            // setTimeout(() => {
+            //     btn.innerHTML = '<i class="fas fa-external-link-alt"></i> View';
+
+            //     // alert('This would open the subscription details page in a real application');
+            // }, 800);
+        }
+        function filterNotifications(type, el) {
+            document.querySelectorAll('.notification-filters button').forEach(btn => btn.classList.remove('active'));
+            el.classList.add('active');
+            document.querySelectorAll('.notification-card').forEach(card => {
+                if (type === 'all') {
+                    card.style.display = '';
+                } else if (type === 'unread') {
+                    card.style.display = card.classList.contains('unread') ? '' : 'none';
+                } else if (type === 'alert') {
+                    card.style.display = card.getAttribute('data-type') === 'alert' ? '' : 'none';
+                }
+            });
+        }
+        function updateBadge() {
+            const unreadCount = document.querySelectorAll('.notification-card.unread').length;
+            const badge = document.getElementById('badge-count');
+            if (unreadCount === 0) {
+                badge.innerHTML = '<i class="fas fa-check"></i> All Read';
+            } else {
+                badge.textContent = `${unreadCount} New`;
+            }
+        }
+    </script>
+{% endblock %}

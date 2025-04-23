@@ -16,7 +16,8 @@ class User(db.Model,UserMixin):
     password_hash = db.Column(db.String(255), nullable=False)  
     profile_picture = db.Column(db.String(255), nullable=True)  
     monthly_budget = db.Column(db.Float, nullable=True)  
-    notification_preferences = db.Column(db.Boolean, default=True)  
+    notification_enabled = db.Column(db.Boolean, default=True)
+    notify_before =  db.Column(db.Integer, default=3)
     last_login = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc)) 
     total_subscriptions = db.Column(db.Integer, default=0)
     total_monthly_cost = db.Column(db.Float, default=0.0)  
@@ -55,3 +56,23 @@ class Subscription(db.Model):
         """Automatically sets cost to 0 if the subscription is a free trial."""
         if self.subscription_type == "free_trial":
             self.cost = 0
+
+
+# class Notification(db.Model):
+#     __tablename__ = 'notifications'
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+#     subscription_id = db.Column(db.Integer, db.ForeignKey('subscription.id'), nullable=True)  # Nullable for general alerts
+#     message = db.Column(db.String(255), nullable=False)
+#     type = db.Column(db.String(50), nullable=False)  # e.g., 'due_reminder', 'trial_end', 'budget_alert'
+#     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+#     is_read = db.Column(db.Boolean, default=False)
+#     is_email_sent = db.Column(db.Boolean, default=False)
+
+#     # Relationships (optional, for easy access)
+#     # user = db.relationship('User', backref='notifications')
+#     # subscription = db.relationship('Subscription', backref='notifications')
+
+#     def __repr__(self):
+#         return f'<Notification {self.id} - User {self.user_id} - {self.type}>'
