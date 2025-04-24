@@ -333,12 +333,13 @@ def notifications():
         Subscription.query
         .join(User)
         .filter(
+            Subscription.user_id == current_user.id,
             Subscription.due_date <= upcoming_date
         )
         .all()
     )
-    
-    return render_template('notifications.html',current_day=current_day, subscriptions=due_subscriptions)
+    total = len(due_subscriptions)
+    return render_template('notifications.html',current_day=current_day, subscriptions=due_subscriptions,total=total)
 
 def calculate_reports():
     monthly_spending = {}
