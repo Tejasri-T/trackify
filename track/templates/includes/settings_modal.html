@@ -85,58 +85,7 @@
                     <span class="slider"></span>
                 </label>
             </div>
-            <!-- <dialog id="notifications" class="myDialog">
-                <form method="POST" action="{{ url_for('notifications_setting') }}">
-                  {{ notification_form.hidden_tag() }}
-                  <div style="background-color: var(--creamy-white); padding: 1rem; border-radius: 1rem;">
-              
-                    <label style="display: flex; align-items: center; gap: 0.5rem;">
-                      <span>{{ notification_form.notifications_enabled.label }}</span>
-                      <span class="theme-switch">
-                        {{ notification_form.notifications_enabled(class_='notification_form-check-input') }}
-                        <span class="slider"></span>
-                      </span>
-                    </label>
-              
-                    <div id="notify-options" style="margin-top: 1rem;">
-                      {% if current_user.notification_enabled %}
-                        <label>{{ notification_form.notify_before_days.label }}</label><br>
-                        {{ notification_form.notify_before_days(class_='form-control',value=current_user.notify_before) }}
-                      {% else %}
-                        <p style="color: gray;">Enable notifications to change preferences</p>
-                      {% endif %}
-                    </div>
-              
-                    <br>{{ notification_form.submit(class_='btn btn-primary', style='margin-top: 1rem;') }}
-                  </div>
-                </form>
-              
-                <script>
-                  const checkbox = document.querySelector('input[name="notifications_enabled"]');
-                  const notifyOptions = document.getElementById('notify-options');
-              
-                  checkbox.addEventListener('change', function () {
-                    if (this.checked) {
-                      notifyOptions.innerHTML = `
-                        <label for="notify_before_days">Notify Before (days)</label><br>
-                        <input type="number" name="notify_before_days" class="form-control" required>
-                      `;
-                    } else {
-                      notifyOptions.innerHTML = `<p style="color: gray;">Enable notifications to change preferences</p>`;
-                    }
-                  });
-                </script>
-              </dialog>
-              
-
-
-            <div class="settings-option">
-                <div class="option-info">
-                    <i class="fas fa-bell"></i>
-                    <span>Notification Preferences</span>
-                    <button onclick="document.getElementById('notifications').style.display='block'" id="editButton" class="edit-btn">Edit</button>
-                </div>
-                 -->
+    
 
             </div>
             <div class="settings-option danger">

@@ -73,7 +73,10 @@ def logout():
 @login_required
 def dashboard():
     subscriptions = Subscription.query.filter_by(user_id=current_user.id).all()
-    total = db.session.query(Subscription).filter(Subscription.due_date > datetime.now(timezone.utc)).count()
+    total = db.session.query(Subscription).filter_by(user_id=current_user.id).filter(Subscription.due_date > datetime.now(timezone.utc)).count()
+    print(f"Total Subscriptions: {total}")
+    print(f"Subscriptions: {subscriptions}")
+    
     subscription_costs = [sub.cost for sub in subscriptions]  
     total_cost = sum(subscription_costs)
     monthly_costs = defaultdict(int)
@@ -224,7 +227,9 @@ def delete_subscription(subscription_id):
 @login_required
 def budgetmanager():
     subscriptions = Subscription.query.filter_by(user_id=current_user.id).all()
-    total = db.session.query(Subscription).count()
+    total = db.session.query(Subscription).filter_by(user_id=current_user.id).count()
+    print(f"Total Subscriptions: {total}")
+    print(f"Subscriptions: {subscriptions}")
     subscription_costs = [sub.cost for sub in subscriptions]  
     total_cost = sum(subscription_costs)
     categories = ['entertainment', 'utilities', 'health', 'others']
