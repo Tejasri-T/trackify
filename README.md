@@ -1,6 +1,6 @@
 # TRACKIFY - Smart Tracking, Smarter Saving
 
-## 💡 Key Features
+** 💡 KEY FEATURES
 
 - 📊 **Real-Time Subscription Tracking**  
   Monitor all your active subscriptions effortlessly with real-time updates.
@@ -13,5 +13,7 @@
 
 - 🚨 **Automated Alerts & Notifications**  
   Receive timely reminders before renewals, and get notified when you're approaching or exceeding your budget.
+
+
 
   
